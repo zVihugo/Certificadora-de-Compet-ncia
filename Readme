@@ -1,0 +1,6 @@
+Projeto de Desenvolvimento de API REST e Videoaulas
+Este é um projeto desenvolvido como parte da matéria de Certificadora de Competência Comum, do curso de ADS. O objetivo deste projeto é criar uma API REST utilizando JavaScript e fornecer conteúdo educacional através de videoaulas.
+Descrição do Projeto
+A API REST será desenvolvida utilizando JavaScript e seguirá os princípios RESTful para facilitar a comunicação entre clientes e servidores. Serão implementadas rotas para realizar operações CRUD (Create, Read, Update, Delete) em recursos específicos, proporcionando uma interface simples e intuitiva para interagir com os dados.
+
+Além disso, o projeto incluirá videoaulas que abordam os conceitos relevantes ao conteúdo do curso. As videoaulas serão hospedadas em um plataforma de vídeos e estarão disponíveis para acesso pelos alunos. Cada vídeo abordará um tópico específico de forma clara e concisa, facilitando a compreensão e aprendizado.
