@@ -21,3 +21,74 @@ Além disso, o projeto incluirá videoaulas que abordam os conceitos relevantes 
 - Matheus Kodi
 - Leandro Henrique
 
+Cronograma de Desenvolvimento da API Back-end
+
+Tema: Gerenciamento de Tarefas (To-Do List)
+
+Período: 07/Abril até 2/Junho
+
+	Etapa 1:
+	
+		Planejamento e Definição de Requisitos
+
+		Revisão dos requisitos do projeto
+		Definição das funcionalidades da To-Do List (criar, visualizar, atualizar, excluir tarefas)
+		Discussão sobre a estrutura de dados necessária
+		Tempo estimado: 4 horas
+
+		Responsável: Victor Moreira
+
+	Etapa 2:
+
+		Configuração do Ambiente de Desenvolvimento
+
+		Instalação do Node.js e NPM
+		Configuração do projeto com Express.js
+		Inicialização do repositório Git
+		Tempo estimado: 3 horas
+
+		Responsável: Victor Moreira 
+
+	Etapa 3:
+
+		Desenvolvimento dos Endpoints Básicos
+
+		Implementação dos endpoints CRUD básicos para gerenciamento de tarefas
+		Teste dos endpoints utilizando ferramentas como Postman ou Insomnia (Ai vai de de gosto essa ferramenta)
+		Tempo estimado: 6 horas (Etapa demorada)
+
+		Responsável: Leandro Henrique
+
+	Etapa 4: 
+
+		Implementação da Lógica de Negócio
+
+		Desenvolvimento das funções para manipulação das tarefas
+		Validação dos dados de entrada
+		Implementação de funcionalidades específicas (por exemplo, marcar uma tarefa como concluída)
+		Tempo estimado: 8 horas (Levei em consideração um tempo maior, devido a preparação e gravação da video aula)
+
+		Responsável:   Mauricio Junior
+	Etapa 5:
+
+		Testes e Depuração
+
+		Execução de testes unitários e de integração
+		Identificação e correção de erros (debugging)
+		Revisão da documentação dos endpoints
+		Tempo estimado: 5 horas
+
+		Responsável: Matheus Kodi
+
+	Etapa 6:
+
+		Finalização e Documentação
+
+		Revisão geral do código-fonte
+		Documentação dos endpoints e da estrutura do projeto
+		Preparação para entrega
+		Tempo estimado: 4 horas
+
+		Responsável: Todos 
+
+
