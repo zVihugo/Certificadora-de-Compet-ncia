@@ -28,6 +28,7 @@ Tema: Gerenciamento de Tarefas (To-Do List)
 Período: 07/Abril até 2/Junho
 
 	Etapa 1:
+		Data: 20/04/2024
 	
 		Planejamento e Definição de Requisitos
 
@@ -36,10 +37,12 @@ Período: 07/Abril até 2/Junho
 		Discussão sobre a estrutura de dados necessária
 		Tempo estimado: 4 horas
 
-		Responsável: Victor Moreira
+		Responsável: 
 
 	Etapa 2:
-
+	
+		Data: 25/04/2024
+		
 		Configuração do Ambiente de Desenvolvimento
 
 		Instalação do Node.js e NPM
@@ -50,16 +53,19 @@ Período: 07/Abril até 2/Junho
 		Responsável: Victor Moreira 
 
 	Etapa 3:
-
+		Data: 01/05/2024
 		Desenvolvimento dos Endpoints Básicos
 
 		Implementação dos endpoints CRUD básicos para gerenciamento de tarefas
 		Teste dos endpoints utilizando ferramentas como Postman ou Insomnia (Ai vai de de gosto essa ferramenta)
 		Tempo estimado: 6 horas (Etapa demorada)
 
-		Responsável: Leandro Henrique
+		Responsável: 
 
-	Etapa 4: 
+	Etapa 4:
+		
+		Data: 05/05/2024
+	
 
 		Implementação da Lógica de Negócio
 
@@ -68,9 +74,10 @@ Período: 07/Abril até 2/Junho
 		Implementação de funcionalidades específicas (por exemplo, marcar uma tarefa como concluída)
 		Tempo estimado: 8 horas (Levei em consideração um tempo maior, devido a preparação e gravação da video aula)
 
-		Responsável:   Mauricio Junior
+		Responsável: 
 	Etapa 5:
-
+		
+		Data: 07/05/2024
 		Testes e Depuração
 
 		Execução de testes unitários e de integração
@@ -78,9 +85,11 @@ Período: 07/Abril até 2/Junho
 		Revisão da documentação dos endpoints
 		Tempo estimado: 5 horas
 
-		Responsável: Matheus Kodi
+		Responsável: 
 
 	Etapa 6:
+	
+		Data: 09/05/2024
 
 		Finalização e Documentação
 
@@ -89,6 +98,4 @@ Período: 07/Abril até 2/Junho
 		Preparação para entrega
 		Tempo estimado: 4 horas
 
-		Responsável: Todos 
-
-
+		Responsável: Todos
