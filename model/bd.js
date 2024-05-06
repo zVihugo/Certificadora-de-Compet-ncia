@@ -24,7 +24,7 @@ const ToDoModel = sequelize.define("ToDo", {
         primaryKey: true
     },
     titulo: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     descricao: {
@@ -37,7 +37,7 @@ const ToDoModel = sequelize.define("ToDo", {
     }
 })
 
-ToDoModel.belongsTo(UserModel);
+ToDoModel.belongsTo(UserModel, {foreignKey: 'userId'});
 
 module.exports = {
     sequelize: sequelize,
