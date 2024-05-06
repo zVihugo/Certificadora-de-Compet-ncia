@@ -1,8 +1,10 @@
 const express = require('express');
+const {sequelize} = require('./model/bd');
 const app = express();
 const port = 3000;
 
-app.get("/", async (req, res) => {
+app.get("/install", async (req, res) => {
+    await sequelize.sync({force: true});
     res.send("Worked!");
 })
 
