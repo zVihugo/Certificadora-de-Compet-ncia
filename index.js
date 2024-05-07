@@ -1,9 +1,16 @@
 const express = require('express');
 const {sequelize} = require('./model/bd');
-const todoService = require("./helpers/todoService")
+const todoService = require("./helpers/todoService");
 const userService = require("./helpers/userService");
+const rotas = require('./routes/routes');
+const bodyParser = require('body-parser')
 const app = express();
 const port = 3000;
+
+//Leitura de JSON
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json())
 
 app.get("/install", async (req, res) => {
 
@@ -49,7 +56,7 @@ app.get("/install", async (req, res) => {
     let list = await todoService.listByUser(findUser.id);
 
     //Excluir um tarefa
-    await todoService.deleteById(toDo1.id)
+    await todoService.deleteById(user.id, toDo1.id)
 
     //Listar novamente as tarefas de um usuário
     newList = await todoService.listByUser(findUser.id)
@@ -59,6 +66,8 @@ app.get("/install", async (req, res) => {
 
     res.json({msg: "Worked!", list: list, newList: newList, findToDo: findToDo});
 })
+
+app.use('/api', rotas);
 
 app.listen(port, () => {
     console.log("Server is running on port 3000");

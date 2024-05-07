@@ -9,6 +9,9 @@ module.exports = {
     },
     update: async(user, name) => {
         return await UserModel.update(user, {where: {name: name}});
+    },
+    delete: async(id) => {
+        return await UserModel.destroy({where: {id: id}})
     }
 
 }

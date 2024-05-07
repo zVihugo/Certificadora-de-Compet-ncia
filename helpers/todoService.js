@@ -7,10 +7,13 @@ module.exports = {
     findByID: async(id) => {
         return await ToDoModel.findByPk(id);
     },
-    listByUser: async(id) => {
-        return await ToDoModel.findAll({where: {userId: id}})
+    listByUser: async(userId) => {
+        return await ToDoModel.findAll({where: {userId: userId}})
     },
-    deleteById: async(id) => {
-        return await ToDoModel.destroy({where: {id: id}})
+    deleteById: async(userId, id) => {
+        return await ToDoModel.destroy({where: {id: id, userId: userId}})
+    },
+    updateById: async(userId, id, tarefa) => {
+        return await ToDoModel.update(tarefa, {where: {id: id, userId: userId}})
     }
 }
