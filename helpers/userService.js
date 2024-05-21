@@ -7,6 +7,9 @@ module.exports = {
     findByPK: async(id) => {
         return await UserModel.findByPk(id)
     },
+    findByName: async (name) => {
+        return await UserModel.findOne({ where: {name: name} });
+    },
     update: async(user, name) => {
         return await UserModel.update(user, {where: {name: name}});
     },
