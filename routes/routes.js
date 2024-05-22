@@ -5,6 +5,7 @@ const userService = require('../helpers/userService');
 
 const { validaRegistro } = require("../middlewares/registro");
 const { updateUser } = require("../middlewares/update");
+const { validaTask } = require("../middlewares/task");
 
 //Rota inicial
 router.get('/', (req, res) => {
@@ -76,13 +77,13 @@ router.delete('/delete/:id', async(req, res) => {
 });
 
 //Rota para adição de uma tarefa
-router.post("/newToDo", async (req, res) => {
+router.post("/newToDo", validaTask, async (req, res) => {
     const {titulo, descricao, dataEntrega} = req.body
 
     if(!req.query.id){
         return res.status(404).json({ msg: "Digite o ID da conta que irá criar o post"});
     }
-
+  
     try{
         let newToDo = await todoService.newToDo({
             titulo: titulo,
@@ -94,7 +95,7 @@ router.post("/newToDo", async (req, res) => {
         return res.status(200).json({msg: "Tarefa adicionada!", toDo: newToDo})
     } catch (error) {
         console.log(error);
-        return res.status(404).json({msg: "Um erro aconteceu!", error: error})
+        return res.status(500).json({msg: "Aconteceu um erro no servidor!"});
     }
 });
 
@@ -103,11 +104,18 @@ router.delete('/deleteToDo/:userId/:id', async(req, res) => {
     const {userId, id} = req.params;
 
     try{
-        let deleted = await todoService.deleteById(userId, id)
-        return res.status(200).json({msg: "Tarefa encontrada e excluída!", deleted: deleted})
+        const task = await todoService.findByID(id);
+
+        if (task && task.userId) {
+            await todoService.deleteById(userId, id);
+            return res.status(200).json({msg: "Tarefa encontrada e excluída!", taskDeleted: task});
+        } else {
+            return res.status(404).json({ msg: "Tarefa não encontrada!" });
+        }
+        
     } catch (error) {
         console.log(error);
-        return res.status(404).json({msg: "Um erro aconteceu!", error: error})
+        return res.status(500).json({msg: "Aconteceu um erro no servidor!"})
     }
 });
 
@@ -117,10 +125,15 @@ router.get('/allToDo/:userId', async(req, res) => {
 
     try{
         let found = await todoService.listByUser(userId)
-        return res.status(200).json({msg: "Tarefa encontrada!", tarefas: found})
+
+        if (found && found > 0) {
+            return res.status(200).json({msg: "Tarefa encontrada!", tarefas: found});
+        } else {
+            return res.status(404).json({ msg: "Tarefa não encontrada!" });
+        }
     } catch (error) {
         console.log(error);
-        return res.status(404).json({msg: "Um erro aconteceu!", error: error})
+        return res.status(500).json({msg: "Aconteceu um erro no servidor!"})
     }
 });
 
@@ -142,7 +155,7 @@ router.put('/changeToDo/:userId/:id', async(req, res) => {
     } catch (error) {
         console.log(error);
         console.log(titulo)
-        return res.status(404).json({msg: "Um erro aconteceu!", error: error})
+        return res.status(500).json({msg: "Aconteceu um erro no servidor!" });
     }
 });
 
