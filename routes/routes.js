@@ -2,10 +2,15 @@ const express = require('express');
 var router  = express.Router();
 const todoService = require('../helpers/todoService');
 const userService = require('../helpers/userService');
+const jwt = require("jsonwebtoken");
 
 const { validaRegistro } = require("../middlewares/registro");
 const { updateUser } = require("../middlewares/update");
 const { validaTask } = require("../middlewares/task");
+const { validaToken } = require("../middlewares/token");
+
+const dotenv = require("dotenv");
+dotenv.config();
 
 //Rota inicial
 router.get('/', (req, res) => {
@@ -14,20 +19,27 @@ router.get('/', (req, res) => {
 
 //Rota para registro de user
 router.post('/registrar', validaRegistro, async (req, res) => {
-    const nome = req.body.name
-    console.log(nome)
+    const { name, senha } = req.body;
+    console.log(name);
+  
     try {
-        const newUser = await userService.new({name: nome});
-        console.log(newUser)
-        return res.status(201).json({ msg: "Cadastrado", user: newUser });
+      const newUser = await userService.new({ name: name, senha: senha });
+      console.log(newUser);
+  
+      const token = jwt.sign({ name: name }, process.env.SECRET, {
+        expiresIn: "12h",
+      });
+  
+      return res.status(201).json({ msg: "Cadastrado", user: newUser, token: token });
+
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ msg: "Um erro aconteceu!" });
+        return res.status(500).json({ msg: "Aconteceu um erro no servidor." });
     }
 });
 
 //Rota para modificação de user
-router.put('/update/:nomeUserAntigo/:nomeUserUpdated', updateUser, async(req, res) => {
+router.put('/update/:nomeUserAntigo/:nomeUserUpdated', updateUser, validaToken, async(req, res) => {
     const {nomeUserAntigo, nomeUserUpdated} = req.params;
 
     try {
@@ -57,7 +69,7 @@ router.get('/listUser/:id', async (req, res) => {
 });
 
 //Rota para exclusão de user
-router.delete('/delete/:id', async(req, res) => {
+router.delete('/delete/:id', validaToken, async(req, res) => {
     const id = req.params.id
     
     try {
@@ -100,7 +112,7 @@ router.post("/newToDo", validaTask, async (req, res) => {
 });
 
 //Rota para exclusão de uma tarefa
-router.delete('/deleteToDo/:userId/:id', async(req, res) => {
+router.delete('/deleteToDo/:userId/:id', validaToken, async(req, res) => {
     const {userId, id} = req.params;
 
     try{
@@ -138,7 +150,7 @@ router.get('/allToDo/:userId', async(req, res) => {
 });
 
 //Rota para atualização da tarefa
-router.put('/changeToDo/:userId/:id', async(req, res) => {
+router.put('/changeToDo/:userId/:id', validaToken, async(req, res) => {
     const {userId, id} = req.params;
 
     const {titulo, descricao, dataEntrega} = req.body
