@@ -19,7 +19,8 @@ app.get("/install", async (req, res) => {
 
     //Criação de novo usuário
     let user = await userService.new({
-        name: "Leandro"
+        name: "Leandro",
+        senha: "abc12345"
     });
     
     //Update de um novo usuário
