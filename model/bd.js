@@ -13,9 +13,14 @@ const UserModel = sequelize.define("User", {
     },
     name: {
         type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    senha: {
+        type: DataTypes.STRING,
         allowNull: false
     }
-})
+});
 
 const ToDoModel = sequelize.define("ToDo", {
     id: {
