@@ -147,7 +147,6 @@ router.delete('/deleteToDo/:userId/:id', validaToken, async (req, res) => {
 //Rota para listagem da tarefa de determinado usuário
 router.get('/allToDo/:userId', async (req, res) => {
   const userId = req.params.userId;
-
   try {
     let found = await todoService.listByUser(userId);
 
@@ -171,6 +170,19 @@ router.put('/changeToDo/:userId/:id', validaToken, async (req, res) => {
   const { titulo, descricao, dataEntrega } = req.body;
   const [day, month, year] = dataEntrega.split('/');
 
+  if (!titulo) {
+    return res.status(404).json({ msg: 'titulo não foi inserido!' });
+  }
+  if (!descricao) {
+    return res.status(404).json({ msg: 'descrição não foi inserido!' });
+  }
+  const dataRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+
+  if (!dataEntrega || !dataRegex.test(dataEntrega)) {
+    return res
+      .status(400)
+      .json({ msg: 'Data de entrega inválida. Use o formato DD/MM/YYYY.' });
+  }
   const dataEntregaDate = new Date(`${year}-${month}-${day}`);
   try {
     let change = todoService.updateById(userId, id, {
