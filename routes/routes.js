@@ -151,7 +151,7 @@ router.get('/allToDo/:userId', async (req, res) => {
   try {
     let found = await todoService.listByUser(userId);
 
-    if (found && found > 0) {
+    if (found && found.length > 0) {
       return res
         .status(200)
         .json({ msg: 'Tarefa encontrada!', tarefas: found });
