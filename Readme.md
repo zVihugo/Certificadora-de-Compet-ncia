@@ -131,7 +131,7 @@ Depois de clonar o repositório, você precisa instalar as dependências do proj
    ```
    Este comando vai ler o arquivo `package.json` e instalar todas as dependências listadas nele.
 
-### Etapa 4: Rodar o Projeto
+### Etapa 5: Rodar o Projeto
 Agora que todas as dependências estão instaladas, você pode rodar o projeto para ver como ele funciona.
 
 1. No terminal, ainda na pasta do projeto, inicie o servidor:
@@ -142,7 +142,14 @@ Agora que todas as dependências estão instaladas, você pode rodar o projeto p
 
 2. Abra seu navegador e acesse `http://localhost:3000` (ou a porta que seu projeto está configurado para usar) para ver o projeto em ação.
 
-### Etapa 5: Testar Funcionalidades
+### Etapa 5: Criar arquivo .env
+
+1. No diretório raiz do projeto clonado, crio um arquivo chamado `.evn`, dentro deste deste arquivo crie uma variável `name`, e atribuia algum valor a ela:
+   ```sh
+   name = nome_escolhido 
+   ```
+
+### Etapa 6: Testar Funcionalidades
 Com o servidor rodando, você pode testar as funcionalidades da API. Você pode usar uma ferramenta como o Postman ou o próprio navegador para fazer requisições às rotas que você criou.
 
 Por exemplo, se você criou uma rota para listar tarefas, você pode acessá-la no navegador ou no Postman com:
