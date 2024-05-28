@@ -136,9 +136,9 @@ Agora que todas as dependências estão instaladas, você pode rodar o projeto p
 
 1. No terminal, ainda na pasta do projeto, inicie o servidor:
    ```sh
-   node app.js
+   npm run dev app.js
    ```
-   Substitua `app.js` pelo nome do arquivo principal do projeto, se for diferente.
+  Podemos utilizar `npm run dev`, devido a utilização do nodemon em nosso projeto.
 
 2. Abra seu navegador e acesse `http://localhost:3000` (ou a porta que seu projeto está configurado para usar) para ver o projeto em ação.
 
@@ -149,5 +149,4 @@ Por exemplo, se você criou uma rota para listar tarefas, você pode acessá-la 
 ```sh
 http://localhost:3000/tarefas
 ```
-Substitua `/tarefas` pelo endpoint que está configurado no projeto
 
